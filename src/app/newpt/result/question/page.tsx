@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import styled from "@emotion/styled";
 import color from "@/packages/design-system/color";
 import font from "@/packages/design-system/font";
@@ -10,7 +10,7 @@ import { Back, MainFront } from "../../../../../public/svg";
 import MediumButton from "@/components/button/MediumBtn";
 import { answerQuestion } from "@/lib/speech";
 
-export default function ResultQuestionPage() {
+function ResultQuestionContent() {
   const router = useRouter();
   const params = useSearchParams();
   
@@ -352,3 +352,26 @@ const ModelAnswerContent = styled.p`
   line-height: 22px;
   white-space: pre-wrap;
 `;
+
+export default function ResultQuestionPage() {
+  return (
+    <Suspense fallback={<LoadingFallback />}>
+      <ResultQuestionContent />
+    </Suspense>
+  );
+}
+
+function LoadingFallback() {
+  return (
+    <Page>
+      <MainContainer>
+        <HeaderRow>
+          <Spacer />
+          <HeaderTitle>로딩 중...</HeaderTitle>
+          <Spacer />
+        </HeaderRow>
+      </MainContainer>
+      <BottomNavigationBar />
+    </Page>
+  );
+}
