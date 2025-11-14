@@ -10,7 +10,7 @@ import type {
   ServiceErrorResponse,
 } from "@/types/auth";
 import { getAccessToken, getRefreshToken } from "@/lib/token";
-
+  
 
 const API_BASE_URL = "http://54.180.133.135:8080";
 
@@ -104,7 +104,7 @@ export async function logout(): Promise<LogoutResponse> {
   }
 }
 
-export async function refreshToken(): Promise<RefreshResponse> {
+export async function requestRefreshToken(): Promise<RefreshResponse> {
   try {
     const token = getRefreshToken();
     if (!token) {
