@@ -5,13 +5,13 @@ import color from "@/packages/design-system/color";
 import font from "@/packages/design-system/font";
 import BottomNavigationBar from "@/components/common/bottomnavigation";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useMemo, useState, useRef, useEffect } from "react";
+import { useMemo, useState, useRef, useEffect, Suspense } from "react";
 import { Back, Record, Document } from "../../../../public/svg";
 import MediumButton from "@/components/button/MediumBtn";
 import { submitVideoUrl, submitDocumentUrl } from "@/lib/api";
 import { uploadFileAndGetUrl } from "@/lib/file";
 
-export default function NewPresentationStep2Page() {
+function NewPresentationStep2Content() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const stageId = useMemo(() => searchParams?.get("stageId") || null, [searchParams]);
