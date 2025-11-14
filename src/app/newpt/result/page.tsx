@@ -10,11 +10,11 @@ import IconMediumBtn from "@/components/button/IconMediumBtn";
 import NewptCard from "@/components/card/NewptCard";
 import DataCard from "@/components/card/DataCard";
 import QuestionCard from "@/components/card/QuestionCard";
-import { useEffect, useState } from "react";
+import { useEffect, useState, Suspense } from "react";
 import { getSpeech, createFeedback } from "@/lib/speech";
 import type { SpeechRecord, SpeechFeedbackResponse } from "@/types/speech";
 
-export default function NewPtResultPage() {
+function NewPtResultContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const stageId = searchParams?.get("stageId") || null;
@@ -351,3 +351,21 @@ const InfoValue = styled.span`
   color: ${color.default};
 `;
 
+export default function NewPtResultPage() {
+  return (
+    <Suspense fallback={<LoadingFallback />}>
+      <NewPtResultContent />
+    </Suspense>
+  );
+}
+
+function LoadingFallback() {
+  return (
+    <Page>
+      <MainContainer>
+        <LoadingText>로딩 중...</LoadingText>
+      </MainContainer>
+      <BottomNavigationBar />
+    </Page>
+  );
+}
