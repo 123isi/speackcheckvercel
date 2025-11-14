@@ -5,9 +5,10 @@ import color from "@/packages/design-system/color";
 import font from "@/packages/design-system/font";
 import BottomNavigationBar from "@/components/common/bottomnavigation";
 import { useRouter, useSearchParams } from "next/navigation";
+import { Suspense } from "react";
 import { Back } from "../../../../../public/svg";
 
-export default function ResultDetailPage() {
+function ResultDetailContent() {
   const router = useRouter();
   const params = useSearchParams();
   const title = params?.get("title") || "상세";
