@@ -8,16 +8,18 @@ interface IconMediumBtnProps {
     icon?: React.ReactNode;
     children?: React.ReactNode;
     onClick?: () => void;
+    disabled?: boolean;
 }
 
 export default function IconMediumBtn({ 
     width = 100,
     icon = <Plus width={24} height={24} color={color.form}/>,
     children = "새 스테이지 생성",
-    onClick
+    onClick,
+    disabled = false
 }: IconMediumBtnProps) {
     return (
-        <Btn width={width} onClick={onClick}>
+        <Btn width={width} onClick={onClick} disabled={disabled}>
             {icon}
             <Text>{children}</Text>
         </Btn>
@@ -41,12 +43,17 @@ const Btn = styled.button<{ width: number | string }>`
   justify-content: center;
   gap: 8px;
   
-  &:hover {
+  &:hover:not(:disabled) {
     background-color: ${color.primary_m10};
   }
   
-  &:active {
+  &:active:not(:disabled) {
     background-color: ${color.primary_p10};
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
   }
 `;
 
