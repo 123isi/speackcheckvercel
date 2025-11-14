@@ -4,7 +4,7 @@ import { apiClient, handleApiError } from "./api";
 export async function getPresignedUrl(fileName: string): Promise<string> {
   try {
     console.log("📤 Presigned URL 요청:", fileName);
-    const response = await apiClient.get<string>("/files/presigned", {
+    const response = await apiClient.get<string>("https://speakcheck-back.onrender.com/files/presigned", {
       params: { fileName },
     });
     console.log("✅ Presigned URL 받음:", response.data);

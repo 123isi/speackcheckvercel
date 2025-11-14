@@ -105,7 +105,7 @@ export async function createFeedback(speechId: string): Promise<SpeechFeedbackRe
 
 export async function getFastApiStage(stageId: string): Promise<unknown> {
   try {
-    const response = await apiClient.get(`/fastapi/stage/${stageId}`);
+    const response = await apiClient.get(`https://speakcheck-back.onrender.com/fastapi/stage/${stageId}`);
     return response.data;
   } catch (error) {
     handleApiError(error);

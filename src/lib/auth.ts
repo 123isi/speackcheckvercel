@@ -12,7 +12,7 @@ import type {
 import { getAccessToken, getRefreshToken } from "@/lib/token";
   
 
-const API_BASE_URL = "http://54.180.133.135:8080";
+const API_BASE_URL = "https://speakcheck-back.onrender.com";
 
 const authClient = axios.create({
   baseURL: `${API_BASE_URL}/auth`,

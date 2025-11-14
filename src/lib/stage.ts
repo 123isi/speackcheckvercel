@@ -13,7 +13,7 @@ export async function createStage(
   data: CreateStageRequest
 ): Promise<CreateStageResponse> {
   try {
-    const response = await apiClient.post<CreateStageResponse>("/stage", data);
+    const response = await apiClient.post<CreateStageResponse>("https://speakcheck-back.onrender.com/stage", data);
     return response.data;
   } catch (error) {
     handleApiError(error);
@@ -26,7 +26,7 @@ export async function updateStage(
 ): Promise<UpdateStageResponse> {
   try {
     const response = await apiClient.patch<UpdateStageResponse>(
-      `/stage/${stageId}`,
+      `https://speakcheck-back.onrender.com/stage/${stageId}`,
       data
     );
     return response.data;
@@ -40,7 +40,7 @@ export async function deleteStage(
 ): Promise<DeleteStageResponse> {
   try {
     const response = await apiClient.delete<DeleteStageResponse>(
-      `/stage/${stageId}`
+      `https://speakcheck-back.onrender.com/stage/${stageId}`
     );
     return response.data;
   } catch (error) {
@@ -52,7 +52,7 @@ export async function getStageList(
   sortBy: "time" | "word" = "time"
 ): Promise<StageListItem[]> {
   try {
-    const response = await apiClient.get<StageListItem[]>("/stage", {
+    const response = await apiClient.get<StageListItem[]>("https://speakcheck-back.onrender.com/stage", {
       params: { q: sortBy },
     });
     return response.data;
@@ -66,7 +66,7 @@ export async function getStageDetail(
 ): Promise<StageDetailResponse> {
   try {
     const response = await apiClient.get<StageDetailResponse>(
-      `/stage/${stageId}`
+      `https://speakcheck-back.onrender.com/stage/${stageId}`
     );
     return response.data;
   } catch (error) {
