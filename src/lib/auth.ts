@@ -9,7 +9,8 @@ import type {
   ErrorResponse,
   ServiceErrorResponse,
 } from "@/types/auth";
-import { getAccessToken, getRefreshToken } from "./token";
+import { getAccessToken, getRefreshToken } from "@/lib/token";
+
 
 const API_BASE_URL = "http://54.180.133.135:8080";
 
