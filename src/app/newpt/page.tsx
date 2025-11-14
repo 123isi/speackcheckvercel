@@ -5,13 +5,13 @@ import color from "@/packages/design-system/color";
 import font from "@/packages/design-system/font";
 import BottomNavigationBar from "@/components/common/bottomnavigation";
 import { useRouter, useSearchParams } from "next/navigation";
-import { useMemo, useState } from "react";
+import { useMemo, useState, Suspense } from "react";
 import { Back } from "../../../public/svg";
 import MediumButton from "@/components/button/MediumBtn";
 import InputBtn from "@/components/button/InputBtn";
 import { createSpeech } from "@/lib/speech";
 
-export default function NewPresentationPage() {
+function NewPresentationContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const stageId = useMemo(() => searchParams?.get("stageId") || null, [searchParams]);
@@ -165,3 +165,23 @@ const Description = styled.p`
   width: 100%;
 `;
 
+export default function NewPresentationPage() {
+  return (
+    <Suspense fallback={<LoadingFallback />}>
+      <NewPresentationContent />
+    </Suspense>
+  );
+}
+
+function LoadingFallback() {
+  return (
+    <Page>
+      <MainContainer>
+        <FormCard>
+          <Description>로딩 중...</Description>
+        </FormCard>
+      </MainContainer>
+      <BottomNavigationBar />
+    </Page>
+  );
+}

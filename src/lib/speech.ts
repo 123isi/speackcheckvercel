@@ -12,7 +12,7 @@ import type {
 
 export async function createSpeech(data: SpeechCreateRequest): Promise<unknown> {
   try {
-    const response = await apiClient.post("http://0.0.0.0:8081/speech", data);
+    const response = await apiClient.post("http://54.180.133.135:8000/speech", data);
     return response.data;
   } catch (error) {
     handleApiError(error);
@@ -21,7 +21,7 @@ export async function createSpeech(data: SpeechCreateRequest): Promise<unknown> 
 
 export async function getSpeech(speechId: string): Promise<SpeechRecord> {
   try {
-    const response = await apiClient.get(`http://0.0.0.0:8081/speech/${speechId}`);
+    const response = await apiClient.get(`http://54.180.133.135:8000/speech/${speechId}`);
     return response.data;
   } catch (error) {
     handleApiError(error);
@@ -30,7 +30,7 @@ export async function getSpeech(speechId: string): Promise<SpeechRecord> {
 
 export async function deleteSpeech(speechId: string): Promise<unknown> {
   try {
-    const response = await apiClient.delete(`http://0.0.0.0:8081/speech/${speechId}`);
+    const response = await apiClient.delete(`http://54.180.133.135:8000/speech/${speechId}`);
     return response.data;
   } catch (error) {
     handleApiError(error);
@@ -42,7 +42,7 @@ export async function updateSpeechVideo(
   data: SpeechVideoUpdateRequest
 ): Promise<unknown> {
   try {
-    const response = await apiClient.put(`http://0.0.0.0:8081/speech/video/${speechId}`, data);
+    const response = await apiClient.put(`http://54.180.133.135:8000/speech/video/${speechId}`, data);
     return response.data;
   } catch (error) {
     handleApiError(error);
@@ -54,7 +54,7 @@ export async function updateSpeechDocument(
   data: SpeechDocumentUpdateRequest
 ): Promise<unknown> {
   try {
-    const response = await apiClient.put(`http://0.0.0.0:8081/speech/document/${speechId}`, data);
+    const response = await apiClient.put(`http://54.180.133.135:8000/speech/document/${speechId}`, data);
     return response.data;
   } catch (error) {
     handleApiError(error);
@@ -63,8 +63,8 @@ export async function updateSpeechDocument(
 
 export async function getQuestions(speechId: string): Promise<QuestionListResponse> {
   try {
-    console.log("getQuestions - Requesting:", `http://0.0.0.0:8081/question/${speechId}`);
-    const response = await apiClient.get(`http://0.0.0.0:8081/question/${speechId}`);
+    console.log("getQuestions - Requesting:", `http://54.180.133.135:8000/question/${speechId}`);
+    const response = await apiClient.get(`http://54.180.133.135:8000/question/${speechId}`);
     console.log("getQuestions - Response:", response);
     console.log("getQuestions - Response data:", response.data);
     return response.data;
@@ -85,7 +85,7 @@ export async function answerQuestion(
       request_feedback: data.request_feedback ?? true,
     };
     const response = await apiClient.post(
-      `http://0.0.0.0:8081/question/answer/${questionId}`,
+      `http://54.180.133.135:8000/question/answer/${questionId}`,
       payload
     );
     return response.data;
@@ -96,7 +96,7 @@ export async function answerQuestion(
 
 export async function createFeedback(speechId: string): Promise<SpeechFeedbackResponse> {
   try {
-    const response = await apiClient.post(`http://0.0.0.0:8081/speech/${speechId}/feedback`);
+    const response = await apiClient.post(`http://54.180.133.135:8000/speech/${speechId}/feedback`);
     return response.data;
   } catch (error) {
     handleApiError(error);
