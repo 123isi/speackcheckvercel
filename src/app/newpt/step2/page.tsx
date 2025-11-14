@@ -450,3 +450,28 @@ const ErrorMessage = styled.div`
   color: #c33;
   text-align: center;
 `;
+
+export default function NewPresentationStep2Page() {
+  return (
+    <Suspense fallback={<LoadingFallback />}>
+      <NewPresentationStep2Content />
+    </Suspense>
+  );
+}
+
+function LoadingFallback() {
+  return (
+    <Page>
+      <MainContainer>
+        <FormCard>
+          <HeaderRow>
+            <Spacer />
+            <HeaderTitle>로딩 중...</HeaderTitle>
+            <Spacer />
+          </HeaderRow>
+        </FormCard>
+      </MainContainer>
+      <BottomNavigationBar />
+    </Page>
+  );
+}
