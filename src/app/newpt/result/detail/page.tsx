@@ -333,3 +333,26 @@ const DetailCardContent = styled.p`
   line-height: 22px;
   white-space: pre-wrap;
 `;
+
+export default function ResultDetailPage() {
+  return (
+    <Suspense fallback={<LoadingFallback />}>
+      <ResultDetailContent />
+    </Suspense>
+  );
+}
+
+function LoadingFallback() {
+  return (
+    <Page>
+      <MainContainer>
+        <HeaderRow>
+          <Spacer />
+          <HeaderTitle>로딩 중...</HeaderTitle>
+          <Spacer />
+        </HeaderRow>
+      </MainContainer>
+      <BottomNavigationBar />
+    </Page>
+  );
+}
