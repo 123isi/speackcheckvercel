@@ -9,10 +9,9 @@ import type {
   ErrorResponse,
   ServiceErrorResponse,
 } from "@/types/auth";
-import { getAccessToken } from "./token";
+import { getAccessToken, getRefreshToken } from "./token";
 
-const API_BASE_URL =
-  process.env.NEXT_PUBLIC_API_BASE_URL || "https://localhost:8080";
+const API_BASE_URL = "http://54.180.133.135:8080";
 
 const authClient = axios.create({
   baseURL: `${API_BASE_URL}/auth`,
