@@ -82,7 +82,7 @@ export default function StageDetailPage() {
           <SortInactive>최신순</SortInactive>
         </SortBar>
 
-        {stageData && <StageTitle>{stageData.stageName}</StageTitle>}
+        {stageData && <StageTitle>테스트</StageTitle>}
 
         {isLoading ? (
           <EmptyState>
