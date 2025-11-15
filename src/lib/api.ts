@@ -58,7 +58,7 @@ export function handleApiError(error: unknown): never {
 
 export async function submitVideoUrl(speechId: string, videoUrl: string): Promise<void> {
   try {
-    await apiClient.put(`http://54.180.133.135:8000/speech/video/${speechId}`, {
+    await apiClient.put(`https://123isi.com/speech/video/${speechId}`, {
       video_source: videoUrl,
     });
   } catch (error) {
@@ -68,7 +68,7 @@ export async function submitVideoUrl(speechId: string, videoUrl: string): Promis
 
 export async function submitDocumentUrl(speechId: string, documentUrl: string): Promise<void> {
   try {
-    await apiClient.put(`http://54.180.133.135:8000/speech/document/${speechId}`, {
+    await apiClient.put(`https://123isi.com/speech/document/${speechId}`, {
       document_url: documentUrl,
     });
   } catch (error) {
