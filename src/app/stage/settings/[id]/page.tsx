@@ -82,7 +82,7 @@ export default function StageDetailPage() {
           <SortInactive>최신순</SortInactive>
         </SortBar>
 
-        {stageData && <StageTitle>테스트</StageTitle>}
+        {stageData && <StageTitle>{stageData.stageName}</StageTitle>}
 
         {isLoading ? (
           <EmptyState>
@@ -101,7 +101,7 @@ export default function StageDetailPage() {
             {stageData.speeches.map((speech) => (
               <AnnounceCard
                 key={speech.speechId}
-                title={speech.speechName}
+                title='test'
                 createdAt=""
                 onDelete={() => {
                   setSelectedSpeech(speech);
