@@ -74,18 +74,21 @@ export default function QuestionCard() {
         
         {questions && questions.length > 0 ? (
           <List>
-            {questions.map((q) => (
-              <SmallRow
-                key={q.id}
-                role="button"
-                onClick={() => router.push(`/newpt/result/question?stageId=${encodeURIComponent(stageId ?? "")}&presentationId=${encodeURIComponent(presentationId ?? "")}&questionId=${encodeURIComponent(q.id)}&title=${encodeURIComponent(q.question)}`)}
-              >
-                <SmallText>{q.question}</SmallText>
-                <RightIcon>
-                  <Front width={12} height={12} />
-                </RightIcon>
-              </SmallRow>
-            ))}
+            {questions.map((q) => {
+              const cleanQuestion = q.question.replace(/\*\*/g, '');
+              return (
+                <SmallRow
+                  key={q.id}
+                  role="button"
+                  onClick={() => router.push(`/newpt/result/question?stageId=${encodeURIComponent(stageId ?? "")}&presentationId=${encodeURIComponent(presentationId ?? "")}&questionId=${encodeURIComponent(q.id)}&title=${encodeURIComponent(cleanQuestion)}`)}
+                >
+                  <SmallText>{cleanQuestion}</SmallText>
+                  <RightIcon>
+                    <Front width={12} height={12} />
+                  </RightIcon>
+                </SmallRow>
+              );
+            })}
           </List>
         ) : !isLoading && !error && (
           <EmptyText>아직 생성된 질문이 없습니다.</EmptyText>

@@ -40,12 +40,15 @@ export default function AnnounceDelete({ open, title, onConfirm, onCancel }: Ann
 
 const Overlay = styled.div`
   position: fixed;
-  inset: 0;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   background: rgba(0, 0, 0, 0.4);
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 1000;
+  z-index: 9999;
 `;
 
 const Dialog = styled.div`
@@ -57,6 +60,8 @@ const Dialog = styled.div`
   display: flex;
   flex-direction: column;
   gap: 16px;
+  position: relative;
+  z-index: 10000;
 `;
 
 const DialogTitle = styled.h3`
